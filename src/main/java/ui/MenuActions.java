@@ -160,7 +160,5 @@ public class MenuActions extends InfoWindow {
                     add, load, tableView));
             sort_media.setDisable(false);
         }).start();
-
-        //setDefault();
     }
 }
