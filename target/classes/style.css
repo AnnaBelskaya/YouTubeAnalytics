@@ -1,0 +1,30 @@
+#tf1{
+    -fx-background-color: white;
+    -fx-border-color: #c1cad7;
+    -fx-font-size: 10pt;
+}
+
+#leftButton{
+    -fx-font-size: 12pt;
+    -fx-text-fill: #fffbfb;
+    -fx-font-weight: bold;
+}
+
+#leftButton:hover{
+    -fx-cursor: hand;
+}
+
+#rightButton{
+    -fx-text-fill: #d5d5dc;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+#rightButton:hover{
+    -fx-cursor: hand;
+}
+
+.root{
+    -fx-background-color: #57657b; 
+    -fx-background-radius: 5pt;
+}

@@ -15,16 +15,13 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root,900, 650, Color.TRANSPARENT);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
 
         new MenuActions(root, stage);
-        new Thread(new Runnable() {
-            public void run() {
-                initMapper();
-            }
-        }).start();
+        new Thread(() -> initMapper()).start();
     }
 
     public static void main(String[] args) {

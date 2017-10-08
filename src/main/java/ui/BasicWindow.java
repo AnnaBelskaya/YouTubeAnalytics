@@ -43,7 +43,6 @@ public class BasicWindow extends Settings {
         super();
         this.root = root;
         this.stage = stage;
-        root.setStyle("-fx-background-color: #57657b;");
         center.setStyle("-fx-background-color: #e0e3e8;" +
                 "-fx-border-color: #6f6f6f;");
         setElements();
@@ -53,14 +52,11 @@ public class BasicWindow extends Settings {
     }
 
     protected void setElements(){
-        String tfStyle = "-fx-background-color: white;" +
-                "-fx-border-color: #c1cad7;" +
-                "-fx-font-size: 10pt;";
 
         channelId_1.setPrefWidth(250);
         channelId_1.setPromptText("Channel ID#1");
         channelId_1.setLabelFloat(true);
-        channelId_1.setStyle(tfStyle);
+        channelId_1.setId("tf1");
         channelId_1.setUnFocusColor(Color.TRANSPARENT);
         channelId_1.setFocusColor(Color.TRANSPARENT);
         channelId_1.setTranslateX(10);
@@ -69,7 +65,7 @@ public class BasicWindow extends Settings {
         channelId_2.setPrefWidth(250);
         channelId_2.setPromptText("Channel ID#2");
         channelId_2.setLabelFloat(true);
-        channelId_2.setStyle(tfStyle);
+        channelId_2.setId("tf1");
         channelId_2.setUnFocusColor(Color.TRANSPARENT);
         channelId_2.setFocusColor(Color.TRANSPARENT);
         channelId_2.setTranslateX(10);
@@ -78,15 +74,11 @@ public class BasicWindow extends Settings {
 
     private void setTop(){
         new Thread(() -> {
-            String style = "-fx-text-fill: #d5d5dc;" +
-                    "-fx-font-size: 14;" +
-                    "-fx-font-weight: bold;";
-
             final Label projectName = new Label("YouTube Analytics 1.0");
             projectName.setStyle("-fx-text-fill: #cec2ff;" +
                     "-fx-font-size: 16pt;");
 
-            toggle_button.setStyle(style);
+            toggle_button.setId("rightButton");
             toggle_button.setPrefWidth(100);
             toggle_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 public void handle(MouseEvent event) {
@@ -108,7 +100,7 @@ public class BasicWindow extends Settings {
                 }
             });
 
-            close.setStyle(style);
+            close.setId("rightButton");
             close.setOnMouseClicked(event -> stage.close());
 
             top.setSpacing(250);
@@ -125,30 +117,28 @@ public class BasicWindow extends Settings {
 
     private void setLeft(){
         new Thread(() -> {
-            String style =
-                    "-fx-font-size: 12pt; -fx-text-fill: #fffbfb; -fx-font-weight: bold;";
             channel_Info.setGraphic(new Circle(5, Color.CORAL));
-            channel_Info.setStyle(style);
+            channel_Info.setId("leftButton");
             channel_Info.setTranslateX(10);
 
             compare_channels.setGraphic(new Circle(5, Color.GOLD));
-            compare_channels.setStyle(style);
+            compare_channels.setId("leftButton");
             compare_channels.setTranslateX(10);
 
             sort_channels.setGraphic(new Circle(5, Color.BLUEVIOLET));
-            sort_channels.setStyle(style);
+            sort_channels.setId("leftButton");
             sort_channels.setTranslateX(10);
 
             media_info.setGraphic(new Circle(5, Color.CRIMSON));
-            media_info.setStyle(style);
+            media_info.setId("leftButton");
             media_info.setTranslateX(10);
 
             compare_media.setGraphic(new Circle(5, Color.FLORALWHITE));
-            compare_media.setStyle(style);
+            compare_media.setId("leftButton");
             compare_media.setTranslateX(10);
 
             sort_media.setGraphic(new Circle(5, Color.FORESTGREEN));
-            sort_media.setStyle(style);
+            sort_media.setId("leftButton");
             sort_media.setTranslateX(10);
 
             ImageView timer_image = new ImageView("http://cistrome.org/TIMER/img/timer.png");
