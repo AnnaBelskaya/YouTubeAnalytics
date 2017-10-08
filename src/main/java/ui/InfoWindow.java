@@ -26,11 +26,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class InfoWindow extends BasicWindow {
-    protected String style = "-fx-background-color: white;" +
-            "-fx-border-color: #a4bcd2;" +
-            "-fx-border-radius: 15pt;" +
-            "-fx-background-radius:5%;";
-
     protected JFXTextField id_input_1, id_input_2;
     protected JFXButton show, compare, add, load;
     protected ObservableList<ChannelInfo> allChannels;
@@ -192,7 +187,7 @@ public class InfoWindow extends BasicWindow {
         infoBox = new HBox();
         infoBox.setPadding(new Insets(10,10,10,10));
         infoBox.setSpacing(10);
-        infoBox.setStyle(style);
+        infoBox.setId("box");
     }
 
     private void setBasicElements(){

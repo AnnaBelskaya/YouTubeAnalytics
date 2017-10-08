@@ -5,6 +5,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TableViewUtils {
+    private static TableColumn<ChannelInfo,Long> commentsColumn = new TableColumn<>("Comments");
+
     private TableViewUtils(){}
 
     public static TableView getTable(){
@@ -43,10 +45,14 @@ public class TableViewUtils {
     }
 
     public static void addColumn(TableView tableView){
-        TableColumn<ChannelInfo,Long> commentsColumn = new TableColumn<ChannelInfo,Long>("Comments");
         commentsColumn.setMinWidth(60);
         commentsColumn.setCellValueFactory(new PropertyValueFactory<>("comments"));
 
         tableView.getColumns().addAll(commentsColumn);
+    }
+
+    public static void removeColumn(TableView tableView){
+        if (tableView.getColumns().contains(commentsColumn))
+            tableView.getColumns().remove(commentsColumn);
     }
 }

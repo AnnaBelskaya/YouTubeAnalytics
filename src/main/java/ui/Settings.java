@@ -58,7 +58,7 @@ public class Settings {
         clear_cache = new JFXButton("Clear cache");
         clear_cache.setTranslateY(50);
         clear_cache.setTranslateX(370);
-        clear_cache.setStyle("-fx-background-color: #e4e4e4; -fx-font-size: 11pt;");
+        clear_cache.setId("clearButton");
         clear_cache.setOnMouseClicked(event -> FileUtils.write("",cache_path, false));
 
         timing_on = new JFXCheckBox();

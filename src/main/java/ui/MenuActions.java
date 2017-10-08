@@ -62,6 +62,7 @@ public class MenuActions extends InfoWindow {
     protected void sort_channels_action(){
         center.getChildren().clear();
         actionName.setText("Sort channels");
+        TableViewUtils.removeColumn(tableView);
         add.setOnMouseClicked(event -> {
             if (id_input_1.getText().length() == 24)
             try {
