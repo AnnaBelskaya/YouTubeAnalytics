@@ -13,29 +13,24 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import utils.FileUtils;
 import utils.ImageUtils;
 import utils.ChannelInfo;
 import utils.TableViewUtils;
-
 import java.util.Collections;
 import java.util.Comparator;
 
 public class InfoWindow extends BasicWindow {
     protected JFXTextField id_input_1, id_input_2;
-    protected JFXButton show, compare, add, load;
+    protected JFXButton show, compare;
     protected ObservableList<ChannelInfo> allChannels;
     protected TableView tableView;
     protected VBox channel_box_1, channel_box_2;
-    protected HBox infoBox;
     protected JFXTextArea channel_title_1, channel_title_2,
             channel_description_1;
-    protected Label actionName, infoLabel,
-            videosCount_1, videosCount_2,
+    protected Label videosCount_1, videosCount_2,
             viewsCount_1, viewsCount_2,
             commentsCount_1, commentsCount_2,
             creationDate_1, creationDate_2,
@@ -64,9 +59,6 @@ public class InfoWindow extends BasicWindow {
         viewsCount_1.setText("Views\t");
         viewsCount_2.setText("Views\t");
 
-        infoBox.setTranslateX(25);
-        infoBox.setTranslateY(155);
-        infoBox.setPrefSize(600,400);
         Platform.runLater(()->timer.setText("Timer: 0ms."));
 
         channel_picture_1 = ImageUtils.crop(ImageUtils.default_image);
@@ -158,22 +150,9 @@ public class InfoWindow extends BasicWindow {
         channel_box_2.setSpacing(10);
         channel_box_2.setTranslateX(10);
         channel_box_2.setTranslateY(10);
-
-        infoBox = new HBox();
-        infoBox.setId("box");
     }
 
     private void setBasicElements(){
-        actionName = new Label();
-        actionName.setStyle("-fx-font-size: 14pt; -fx-font-weight: bold;");
-        actionName.setTranslateX(25);
-        actionName.setTranslateY(15);
-
-        infoLabel = new Label("Enter channel ID into the text field.");
-        infoLabel.setTranslateX(25);
-        infoLabel.setTranslateY(70);
-        infoLabel.setStyle("-fx-font-style: italic; -fx-text-fill: dimgray; -fx-font-size: 10pt;");
-
         id_input_1 = new JFXTextField();
         id_input_1.setTranslateX(25);
         id_input_1.setTranslateY(100);
@@ -216,26 +195,13 @@ public class InfoWindow extends BasicWindow {
                 e.printStackTrace();
             }
         });
-
         allChannels = FXCollections.observableArrayList();
-
-        add = new JFXButton("Add");
-        add.setId("mainButton");
-        add.setTranslateX(330);
-        add.setTranslateY(100);
-
-        load = new JFXButton("Load from cache");
-        load.setId("mainButton");
-        load.setTranslateX(480);
-        load.setTranslateY(100);
     }
 
     protected void sortByTitle(ChannelInfo channelInfo, boolean addToCache) {
         long start = System.currentTimeMillis();
-
-        if (cache_is_on && addToCache) {
+        if (cache_is_on && addToCache)
             FileUtils.write(id_input_1.getText(), cache_path, true);
-        }
 
         allChannels.add(channelInfo);
         Collections.sort(allChannels, Comparator.comparing(ChannelInfo::getChannelTitle));
@@ -244,7 +210,6 @@ public class InfoWindow extends BasicWindow {
         long end = System.currentTimeMillis();
         if (timing_is_on)
             timer.setText("Timer: " + (end - start) + "ms.");
-
     }
 
     protected void sortByComments(ChannelInfo channelInfo, boolean addToCache) {
@@ -252,9 +217,8 @@ public class InfoWindow extends BasicWindow {
         allChannels.add(channelInfo);
 
         if (cache_is_on && addToCache) {
-            if (!FileUtils.readLine(cache_path).equals("")){
+            if (!FileUtils.readLine(cache_path).equals(""))
                 FileUtils.write("\n", cache_path, true);
-            }
             FileUtils.write(id_input_1.getText(), cache_path, true);
         }
 

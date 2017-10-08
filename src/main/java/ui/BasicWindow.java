@@ -12,24 +12,23 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class BasicWindow extends Settings {
     private JFXButton toggle_button = new JFXButton("Settings");
     private JFXButton close = new JFXButton("X");
-
+    protected HBox infoBox;
     protected JFXButton channel_Info = new JFXButton("Channel info");
     protected JFXButton compare_channels = new JFXButton("Compare channels");
     protected JFXButton sort_channels = new JFXButton("Sort by data");
     protected JFXButton media_info = new JFXButton("Media info");
     protected JFXButton compare_media = new JFXButton("Compare media");
     protected JFXButton sort_media = new JFXButton("Sort by media");
-    protected Label timer;
-
+    protected JFXButton add = new JFXButton("Add");
+    protected JFXButton load = new JFXButton("Load from cache");
+    protected Label timer, actionName, infoLabel;
     protected JFXTextField channelId_1 = new JFXTextField();
     protected JFXTextField channelId_2 = new JFXTextField();
-
     protected boolean isSettingsMode = false;
     protected HBox top = new HBox();
     protected VBox left;
@@ -50,24 +49,38 @@ public class BasicWindow extends Settings {
     }
 
     protected void setElements(){
+        actionName = new Label();
+        actionName.setStyle("-fx-font-size: 14pt; -fx-font-weight: bold;");
+        actionName.setTranslateX(25);
+        actionName.setTranslateY(15);
 
-        channelId_1.setPrefWidth(250);
+        infoLabel = new Label("Enter channel ID into the text field.");
+        infoLabel.setTranslateX(25);
+        infoLabel.setTranslateY(70);
+        infoLabel.setStyle("-fx-font-style: italic; -fx-text-fill: dimgray; -fx-font-size: 10pt;");
+
         channelId_1.setPromptText("Channel ID#1");
         channelId_1.setLabelFloat(true);
         channelId_1.setId("tf1");
-        channelId_1.setUnFocusColor(Color.TRANSPARENT);
-        channelId_1.setFocusColor(Color.TRANSPARENT);
-        channelId_1.setTranslateX(10);
-        channelId_1.setTranslateY(20);
 
-        channelId_2.setPrefWidth(250);
         channelId_2.setPromptText("Channel ID#2");
         channelId_2.setLabelFloat(true);
         channelId_2.setId("tf1");
-        channelId_2.setUnFocusColor(Color.TRANSPARENT);
-        channelId_2.setFocusColor(Color.TRANSPARENT);
-        channelId_2.setTranslateX(10);
-        channelId_2.setTranslateY(20);
+
+        add = new JFXButton("Add");
+        add.setId("mainButton");
+        add.setTranslateX(330);
+        add.setTranslateY(100);
+
+        load = new JFXButton("Load from cache");
+        load.setId("mainButton");
+        load.setTranslateX(480);
+        load.setTranslateY(100);
+
+        infoBox = new HBox();
+        infoBox.setTranslateX(25);
+        infoBox.setTranslateY(155);
+        infoBox.setId("box");
     }
 
     private void setTop(){
