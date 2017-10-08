@@ -30,15 +30,11 @@ public class InfoWindow extends BasicWindow {
             "-fx-border-color: #a4bcd2;" +
             "-fx-border-radius: 15pt;" +
             "-fx-background-radius:5%;";
-    protected String label_style = "-fx-font-size: 11pt;" +
-            "-fx-font-style: italic;" +
-            "-fx-text-fill: dimgray;";
-    //input
+
     protected JFXTextField id_input_1, id_input_2;
     protected JFXButton show, compare, add, load;
     protected ObservableList<ChannelInfo> allChannels;
 
-    //output
     protected TableView tableView;
 
     protected VBox channel_box_1, channel_box_2;
@@ -142,29 +138,29 @@ public class InfoWindow extends BasicWindow {
                 "-fx-font-style: italic;");
 
         videosCount_1 = new Label("Videos\t");
-        videosCount_1.setStyle(label_style);
+        videosCount_1.setId("customLabel");
         videosCount_2 = new Label("Videos\t");
-        videosCount_2.setStyle(label_style);
+        videosCount_2.setId("customLabel");
 
         viewsCount_1 = new Label("Views\t");
-        viewsCount_1.setStyle(label_style);
+        viewsCount_1.setId("customLabel");
         viewsCount_2 = new Label("Views\t");
-        viewsCount_2.setStyle(label_style);
+        viewsCount_2.setId("customLabel");
 
         creationDate_1 = new Label("Created at\t");
-        creationDate_1.setStyle(label_style);
+        creationDate_1.setId("customLabel");
         creationDate_2 = new Label("Created at\t");
-        creationDate_2.setStyle(label_style);
+        creationDate_2.setId("customLabel");
 
         commentsCount_1 = new Label("Comments\t");
-        commentsCount_1.setStyle(label_style);
+        commentsCount_1.setId("customLabel");
         commentsCount_2 = new Label("Comments\t");
-        commentsCount_2.setStyle(label_style);
+        commentsCount_2.setId("customLabel");
 
         subsCount_1 = new Label("Subscribers\t");
-        subsCount_1.setStyle(label_style);
+        subsCount_1.setId("customLabel");
         subsCount_2 = new Label("Subscribers\t");
-        subsCount_2.setStyle(label_style);
+        subsCount_2.setId("customLabel");
 
         separator = new Separator(Orientation.VERTICAL);
         separator.setPrefHeight(390);
@@ -200,16 +196,6 @@ public class InfoWindow extends BasicWindow {
     }
 
     private void setBasicElements(){
-        String textFieldStyle = "-fx-background-color: white;" +
-                "-fx-background-radius: 5pt;" +
-                "-fx-font-size: 12pt;" +
-                "-fx-border-width: 2pt;" +
-                "-fx-border-color: transparent transparent transparent rgba(0,0,0,0.62);";
-
-        String buttonStyle = "-fx-background-color: #3c4151;" +
-                "-fx-font-size: 12pt;" +
-                "-fx-text-fill: ghostwhite";
-
         actionName = new Label();
         actionName.setStyle("-fx-font-size: 14pt; -fx-font-weight: bold;");
         actionName.setTranslateX(25);
@@ -226,7 +212,7 @@ public class InfoWindow extends BasicWindow {
         id_input_1.setTranslateX(25);
         id_input_1.setTranslateY(100);
         id_input_1.setMinSize(250, 30);
-        id_input_1.setStyle(textFieldStyle);
+        id_input_1.setId("tf2");
 
         id_input_2 = new JFXTextField();
         id_input_2.setFocusColor(Color.TRANSPARENT);
@@ -234,10 +220,10 @@ public class InfoWindow extends BasicWindow {
         id_input_2.setTranslateX(330);
         id_input_2.setTranslateY(100);
         id_input_2.setMinSize(250, 30);
-        id_input_2.setStyle(textFieldStyle);
+        id_input_2.setId("tf2");
 
         show = new JFXButton("Show info");
-        show.setStyle(buttonStyle);
+        show.setId("mainButton");
         show.setMinSize(90,30);
         show.setTranslateX(330);
         show.setTranslateY(100);
@@ -255,7 +241,7 @@ public class InfoWindow extends BasicWindow {
         });
 
         compare = new JFXButton("Compare");
-        compare.setStyle(buttonStyle);
+        compare.setId("mainButton");
         compare.setMinSize(90,30);
         compare.setTranslateX(330);
         compare.setTranslateY(50);
@@ -274,13 +260,13 @@ public class InfoWindow extends BasicWindow {
         allChannels = FXCollections.observableArrayList();
 
         add = new JFXButton("Add");
-        add.setStyle(buttonStyle);
+        add.setId("mainButton");
         add.setTranslateX(330);
         add.setTranslateY(100);
         add.setMinSize(90,30);
 
         load = new JFXButton("Load from cache");
-        load.setStyle(buttonStyle);
+        load.setId("mainButton");
         load.setTranslateX(450);
         load.setTranslateY(100);
         load.setMinSize(90,30);
@@ -328,7 +314,7 @@ public class InfoWindow extends BasicWindow {
     protected void showInfo_1() throws UnirestException {
         ChannelInfo loader = new ChannelInfo(id_input_1.getText(), apiKey);
         channel_title_1.setText(" Channel title: " + loader.getChannelTitle());
-        creationDate_1.setText("Date\t\t" + loader.getDate());
+        creationDate_1.setText("Date\t\t\t" + loader.getDate());
         subsCount_1.setText("Subscribers\t" + loader.getSubscribers());
         videosCount_1.setText("Videos\t\t" + loader.getVideos());
         viewsCount_1.setText("Views\t\t" + loader.getViews());
@@ -342,7 +328,7 @@ public class InfoWindow extends BasicWindow {
         showInfo_1();
         ChannelInfo loader = new ChannelInfo(id_input_2.getText(), apiKey);
         channel_title_2.setText(" Channel title: " + loader.getChannelTitle());
-        creationDate_2.setText("Date:\t\t" + loader.getDate());
+        creationDate_2.setText("Date:\t\t\t" + loader.getDate());
         subsCount_2.setText("Subscribers\t" + loader.getSubscribers());
         videosCount_2.setText("Videos\t\t" + loader.getVideos());
         viewsCount_2.setText("Views\t\t" + loader.getViews());

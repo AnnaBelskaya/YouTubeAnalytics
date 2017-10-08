@@ -4,6 +4,14 @@
     -fx-font-size: 10pt;
 }
 
+#tf2{
+    -fx-background-color: white;
+    -fx-background-radius: 5pt;
+    -fx-font-size: 12pt;
+    -fx-border-width: 2pt;
+    -fx-border-color: transparent transparent transparent rgba(0,0,0,0.62);
+}
+
 #leftButton{
     -fx-font-size: 12pt;
     -fx-text-fill: #fffbfb;
@@ -20,11 +28,33 @@
     -fx-font-weight: bold;
 }
 
-#rightButton:hover{
+.button:hover{
     -fx-cursor: hand;
 }
 
 .root{
-    -fx-background-color: #57657b; 
+    -fx-background-color: #57657b;
     -fx-background-radius: 5pt;
+}
+
+#customLabel{
+    -fx-font-size: 11pt;
+    -fx-font-style: italic;
+    -fx-text-fill: dimgray;
+}
+
+#timer{
+    -fx-font-size: 12pt;
+    -fx-text-fill: lightgray;
+}
+
+#projectName{
+    -fx-text-fill: #cec2ff;
+    -fx-font-size: 16pt;
+}
+
+#mainButton{
+    -fx-background-color: #3c4151;
+    -fx-font-size: 12pt;
+    -fx-text-fill: ghostwhite;
 }

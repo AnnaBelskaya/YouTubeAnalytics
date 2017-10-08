@@ -75,29 +75,26 @@ public class BasicWindow extends Settings {
     private void setTop(){
         new Thread(() -> {
             final Label projectName = new Label("YouTube Analytics 1.0");
-            projectName.setStyle("-fx-text-fill: #cec2ff;" +
-                    "-fx-font-size: 16pt;");
+            projectName.setId("projectName");
 
             toggle_button.setId("rightButton");
             toggle_button.setPrefWidth(100);
-            toggle_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent event) {
-                    if (isSettingsMode){
-                        try {
-                            saveSettings();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        toggle_button.setText("Settings");
-                        root.setLeft(left);
-                        root.setCenter(center);
-                    } else {
-                        toggle_button.setText("<- back");
-                        root.setLeft(null);
-                        root.setCenter(settings_pane);
+            toggle_button.setOnMouseClicked(event -> {
+                if (isSettingsMode){
+                    try {
+                        saveSettings();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    isSettingsMode = !isSettingsMode;
+                    toggle_button.setText("Settings");
+                    root.setLeft(left);
+                    root.setCenter(center);
+                } else {
+                    toggle_button.setText("<- back");
+                    root.setLeft(null);
+                    root.setCenter(settings_pane);
                 }
+                isSettingsMode = !isSettingsMode;
             });
 
             close.setId("rightButton");
@@ -147,8 +144,7 @@ public class BasicWindow extends Settings {
             timer = new Label("Timer: 0ms.");
             timer.setGraphic(timer_image);
             timer.setTranslateX(15);
-            timer.setStyle("-fx-font-size: 12pt;" +
-                    "-fx-text-fill: lightgray;");
+            timer.setId("timer");
 
             VBox buttonsBox = new VBox(channel_Info, compare_channels,
                     sort_channels, media_info, compare_media, sort_media);
