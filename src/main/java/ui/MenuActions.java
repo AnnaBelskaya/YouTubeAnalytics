@@ -127,6 +127,19 @@ public class MenuActions extends InfoWindow {
 
     protected void sort_media_action(){
         center.getChildren().clear();
+
+        new Thread(() -> {
+            actionName.setText("Sort channels by media");
+            tableView.getItems().clear();
+            setDefault();
+            TableViewUtils.addColumn(tableView);
+            tableView.setItems(allChannels);
+
+            Platform.runLater(() -> center.getChildren().addAll(actionName, infoLabel, id_input_1,
+                    add, load, tableView));
+            sort_media.setDisable(false);
+        }).start();
+
         add.setOnMouseClicked(event -> {
             if (id_input_1.getText().length() == 24)
                 try {
@@ -149,16 +162,5 @@ public class MenuActions extends InfoWindow {
             }
         });
 
-        new Thread(() -> {
-            actionName.setText("Sort channels by media");
-            tableView.getItems().clear();
-            setDefault();
-            TableViewUtils.addColumn(tableView);
-            tableView.setItems(allChannels);
-
-            Platform.runLater(() -> center.getChildren().addAll(actionName, infoLabel, id_input_1,
-                    add, load, tableView));
-            sort_media.setDisable(false);
-        }).start();
     }
 }
