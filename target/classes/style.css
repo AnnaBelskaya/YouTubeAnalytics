@@ -10,6 +10,10 @@
     -fx-font-size: 12pt;
     -fx-border-width: 2pt;
     -fx-border-color: transparent transparent transparent rgba(0,0,0,0.62);
+    -fx-min-width: 250;
+    -fx-min-height: 30;
+    -jfx-focus-color: transparent;
+    -jfx-unfocus-color: transparent;
 }
 
 #box{
@@ -17,11 +21,17 @@
     -fx-border-color: #a4bcd2;
     -fx-border-radius: 15pt;
     -fx-background-radius:5%;
+    -fx-spacing: 10;
+    -fx-padding: 10 10 10 10;
 }
 
 #description{
     -fx-font-size: 11pt;
     -fx-font-style: italic;
+    -jfx-focus-color: transparent;
+    -jfx-unfocus-color: transparent;
+    -fx-max-height: 400;
+    -fx-min-width: 300;
 }
 
 #clearButton{
@@ -54,6 +64,13 @@
     -fx-background-radius: 5pt;
 }
 
+#channelTitle{
+    -fx-max-height: 15;
+    -jfx-focus-color: transparent;
+    -jfx-unfocus-color: transparent;
+    -fx-font-size: 13pt;
+}
+
 #customLabel{
     -fx-font-size: 11pt;
     -fx-font-style: italic;
@@ -74,4 +91,6 @@
     -fx-background-color: #3c4151;
     -fx-font-size: 12pt;
     -fx-text-fill: ghostwhite;
+    -fx-min-width: 120;
+    -fx-min-height: 30;
 }

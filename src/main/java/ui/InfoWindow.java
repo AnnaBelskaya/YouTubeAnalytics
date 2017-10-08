@@ -7,7 +7,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -98,24 +97,14 @@ public class InfoWindow extends BasicWindow {
 
         channel_title_1 = new JFXTextArea(" Channel title ");
         channel_title_1.setEditable(false);
-        channel_title_1.setMaxHeight( 15);
-        channel_title_1.setFocusColor(Color.TRANSPARENT);
-        channel_title_1.setUnFocusColor(Color.TRANSPARENT);
-        channel_title_1.setStyle("-fx-font-size: 13pt;");
+        channel_title_1.setId("channelTitle");
 
         channel_title_2 = new JFXTextArea();
         channel_title_2.setEditable(false);
-        channel_title_2.setMaxHeight(15);
-        channel_title_2.setFocusColor(Color.TRANSPARENT);
-        channel_title_2.setUnFocusColor(Color.TRANSPARENT);
-        channel_title_2.setStyle("-fx-font-size: 13pt;");
+        channel_title_2.setId("channelTitle");
 
         channel_description_1 = new JFXTextArea("Description");
         channel_description_1.setEditable(false);
-        channel_description_1.setMaxHeight(400);
-        channel_description_1.setMinWidth(300);
-        channel_description_1.setFocusColor(Color.TRANSPARENT);
-        channel_description_1.setUnFocusColor(Color.TRANSPARENT);
         channel_description_1.setId("description");
 
         videosCount_1 = new Label("Videos\t");
@@ -171,8 +160,6 @@ public class InfoWindow extends BasicWindow {
         channel_box_2.setTranslateY(10);
 
         infoBox = new HBox();
-        infoBox.setPadding(new Insets(10,10,10,10));
-        infoBox.setSpacing(10);
         infoBox.setId("box");
     }
 
@@ -188,24 +175,17 @@ public class InfoWindow extends BasicWindow {
         infoLabel.setStyle("-fx-font-style: italic; -fx-text-fill: dimgray; -fx-font-size: 10pt;");
 
         id_input_1 = new JFXTextField();
-        id_input_1.setFocusColor(Color.TRANSPARENT);
-        id_input_1.setUnFocusColor(Color.TRANSPARENT);
         id_input_1.setTranslateX(25);
         id_input_1.setTranslateY(100);
-        id_input_1.setMinSize(250, 30);
         id_input_1.setId("tf2");
 
         id_input_2 = new JFXTextField();
-        id_input_2.setFocusColor(Color.TRANSPARENT);
-        id_input_2.setUnFocusColor(Color.TRANSPARENT);
         id_input_2.setTranslateX(330);
         id_input_2.setTranslateY(100);
-        id_input_2.setMinSize(250, 30);
         id_input_2.setId("tf2");
 
         show = new JFXButton("Show info");
         show.setId("mainButton");
-        show.setMinSize(90,30);
         show.setTranslateX(330);
         show.setTranslateY(100);
         show.setOnMouseClicked(event -> {
@@ -223,7 +203,6 @@ public class InfoWindow extends BasicWindow {
 
         compare = new JFXButton("Compare");
         compare.setId("mainButton");
-        compare.setMinSize(90,30);
         compare.setTranslateX(330);
         compare.setTranslateY(50);
         compare.setOnMouseClicked(event -> {
@@ -244,14 +223,11 @@ public class InfoWindow extends BasicWindow {
         add.setId("mainButton");
         add.setTranslateX(330);
         add.setTranslateY(100);
-        add.setMinSize(90,30);
 
         load = new JFXButton("Load from cache");
         load.setId("mainButton");
-        load.setTranslateX(450);
+        load.setTranslateX(480);
         load.setTranslateY(100);
-        load.setMinSize(90,30);
-
     }
 
     protected void sortByTitle(ChannelInfo channelInfo, boolean addToCache) {
