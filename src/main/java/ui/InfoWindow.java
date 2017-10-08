@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -67,7 +68,7 @@ public class InfoWindow extends BasicWindow {
         infoBox.setTranslateX(25);
         infoBox.setTranslateY(155);
         infoBox.setPrefSize(600,400);
-        timer.setText("Timer: 0ms.");
+        Platform.runLater(()->timer.setText("Timer: 0ms."));
 
         channel_picture_1 = ImageUtils.crop(ImageUtils.default_image);
         channel_picture_2 = ImageUtils.crop(ImageUtils.default_image);

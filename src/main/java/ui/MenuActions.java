@@ -17,21 +17,37 @@ public class MenuActions extends InfoWindow {
     }
 
     protected void setActions(){
-        channel_Info.setOnMouseClicked(event -> channel_info_action());
-        compare_channels.setOnMouseClicked(event -> compare_channels_action());
-        sort_channels.setOnMouseClicked(event -> sort_channels_action());
-        media_info.setOnMouseClicked(event -> media_info_action());
-        compare_media.setOnMouseClicked(event -> compare_media_action());
-        sort_media.setOnMouseClicked(event -> sort_media_action());
+        channel_Info.setOnMouseClicked(event ->{
+            channel_Info.setDisable(true);
+            channel_info_action();
+        });
+        compare_channels.setOnMouseClicked(event -> {
+            compare_channels.setDisable(true);
+            compare_channels_action();
+        });
+        sort_channels.setOnMouseClicked(event -> {
+            sort_channels.setDisable(true);
+            sort_channels_action();
+        });
+        media_info.setOnMouseClicked(event -> {
+            media_info.setDisable(true);
+            media_info_action();
+        });
+        compare_media.setOnMouseClicked(event -> {
+            compare_media.setDisable(true);
+            compare_media_action();
+        });
+        sort_media.setOnMouseClicked(event -> {
+            sort_media.setDisable(true);
+            sort_media_action();
+        });
     }
 
     protected void channel_info_action(){
         center.getChildren().clear();
-        actionName.setText("Channel Info");
-        setDefault();
-
         new Thread(() -> {
-            channel_Info.setDisable(true);
+            actionName.setText("Channel Info");
+            setDefault();
 
             infoBox.getChildren().clear();
             infoBox.getChildren().addAll(channel_box_1, separator, channel_description_1);
@@ -43,11 +59,9 @@ public class MenuActions extends InfoWindow {
 
     protected void compare_channels_action(){
         center.getChildren().clear();
-        setDefault();
-        actionName.setText("Compare channels ");
-
         new Thread(() -> {
-            compare_channels.setDisable(true);
+            setDefault();
+            actionName.setText("Compare channels ");
 
             infoBox.getChildren().clear();
             infoBox.getChildren().addAll(channel_box_1, channel_box_2);
@@ -61,16 +75,27 @@ public class MenuActions extends InfoWindow {
 
     protected void sort_channels_action(){
         center.getChildren().clear();
-        actionName.setText("Sort channels");
-        TableViewUtils.removeColumn(tableView);
+
+        new Thread(()->{
+            actionName.setText("Sort channels");
+            TableViewUtils.removeColumn(tableView);
+            setDefault();
+            tableView.getItems().clear();
+            tableView.setItems(allChannels);
+            Platform.runLater(() -> center.getChildren().addAll(actionName, infoLabel, id_input_1,
+                    load, add, tableView));
+            sort_channels.setDisable(false);
+        }).start();
+
         add.setOnMouseClicked(event -> {
             if (id_input_1.getText().length() == 24)
-            try {
-                sortByTitle(new ChannelInfo(id_input_1.getText(), apiKey),true);
-            } catch (UnirestException e) {
-                e.printStackTrace();
-            }
+                try {
+                    sortByTitle(new ChannelInfo(id_input_1.getText(), apiKey),true);
+                } catch (UnirestException e) {
+                    e.printStackTrace();
+                }
         });
+
         load.setOnMouseClicked(event -> {
             allChannels.clear();
             List<String> list = FileUtils.load(cache_path);
@@ -83,17 +108,9 @@ public class MenuActions extends InfoWindow {
                 }
             }
         });
-        setDefault();
-        tableView.getItems().clear();
-        new Thread(() -> {
-            tableView.setItems(allChannels);
-            Platform.runLater(() -> center.getChildren().addAll(actionName, infoLabel, id_input_1,
-                    load, add, tableView));
-        }).start();
     }
 
     protected void media_info_action() {
-        media_info.setDisable(true);
         channel_info_action();
         actionName.setText("Media resonance");
         channel_box_1.getChildren().addAll(commentsCount_1);
@@ -101,7 +118,6 @@ public class MenuActions extends InfoWindow {
     }
 
     protected void compare_media_action() {
-        compare_media.setDisable(true);
         compare_channels_action();
         actionName.setText("Compare media resonance");
         channel_box_1.getChildren().add(commentsCount_1);
@@ -111,7 +127,6 @@ public class MenuActions extends InfoWindow {
 
     protected void sort_media_action(){
         center.getChildren().clear();
-        actionName.setText("Sort channels by media");
         add.setOnMouseClicked(event -> {
             if (id_input_1.getText().length() == 24)
                 try {
@@ -133,17 +148,19 @@ public class MenuActions extends InfoWindow {
                 }
             }
         });
-        tableView.getItems().clear();
-        setDefault();
 
         new Thread(() -> {
+            actionName.setText("Sort channels by media");
+            tableView.getItems().clear();
+            setDefault();
             TableViewUtils.addColumn(tableView);
             tableView.setItems(allChannels);
 
             Platform.runLater(() -> center.getChildren().addAll(actionName, infoLabel, id_input_1,
                     add, load, tableView));
+            sort_media.setDisable(false);
         }).start();
 
-        setDefault();
+        //setDefault();
     }
 }

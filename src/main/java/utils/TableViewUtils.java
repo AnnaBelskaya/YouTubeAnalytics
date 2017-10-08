@@ -10,7 +10,7 @@ public class TableViewUtils {
     private TableViewUtils(){}
 
     public static TableView getTable(){
-        TableView tableView = tableView = new TableView();
+        TableView tableView = new TableView();
         tableView.setStyle("-fx-background-color: white;" +
                 "-fx-font-size: 11pt;");
 
@@ -47,12 +47,12 @@ public class TableViewUtils {
     public static void addColumn(TableView tableView){
         commentsColumn.setMinWidth(60);
         commentsColumn.setCellValueFactory(new PropertyValueFactory<>("comments"));
-
-        tableView.getColumns().addAll(commentsColumn);
+        if (tableView.getColumns().size() == 5)
+            tableView.getColumns().add(commentsColumn);
     }
 
     public static void removeColumn(TableView tableView){
-        if (tableView.getColumns().contains(commentsColumn))
+        if (tableView.getColumns().size() == 6)
             tableView.getColumns().remove(commentsColumn);
     }
 }
