@@ -19,6 +19,11 @@
     -fx-background-radius:5%;
 }
 
+#description{
+    -fx-font-size: 11pt;
+    -fx-font-style: italic;
+}
+
 #clearButton{
     -fx-background-color: #e4e4e4;
     -fx-font-size: 11pt;

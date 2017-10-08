@@ -29,20 +29,17 @@ public class InfoWindow extends BasicWindow {
     protected JFXTextField id_input_1, id_input_2;
     protected JFXButton show, compare, add, load;
     protected ObservableList<ChannelInfo> allChannels;
-
     protected TableView tableView;
-
     protected VBox channel_box_1, channel_box_2;
     protected HBox infoBox;
-    protected JFXTextArea channel_title_1, channel_title_2;
-    protected JFXTextArea channel_description_1, channel_description_2;
-    protected Label actionName;
-    protected Label infoLabel;
-    protected Label videosCount_1, videosCount_2;
-    protected Label viewsCount_1, viewsCount_2;
-    protected Label commentsCount_1, commentsCount_2;
-    protected Label creationDate_1, creationDate_2;
-    protected Label subsCount_1, subsCount_2;
+    protected JFXTextArea channel_title_1, channel_title_2,
+            channel_description_1;
+    protected Label actionName, infoLabel,
+            videosCount_1, videosCount_2,
+            viewsCount_1, viewsCount_2,
+            commentsCount_1, commentsCount_2,
+            creationDate_1, creationDate_2,
+            subsCount_1, subsCount_2;
     protected ImageView channel_picture_1, channel_picture_2;
     protected Separator separator;
 
@@ -56,7 +53,6 @@ public class InfoWindow extends BasicWindow {
         channel_title_1.setText(" Channel title ");
         channel_title_2.setText(" Channel title ");
         channel_description_1.setText("Description");
-        channel_description_2.setText("Description");
         videosCount_1.setText("Videos\t");
         videosCount_2.setText("Videos\t");
         commentsCount_1.setText("Comments\t");
@@ -99,7 +95,6 @@ public class InfoWindow extends BasicWindow {
     protected void setChannelInfoGraphics(){
         tableView = TableViewUtils.getTable();
 
-
         channel_title_1 = new JFXTextArea(" Channel title ");
         channel_title_1.setEditable(false);
         channel_title_1.setMaxHeight( 15);
@@ -120,17 +115,7 @@ public class InfoWindow extends BasicWindow {
         channel_description_1.setMinWidth(300);
         channel_description_1.setFocusColor(Color.TRANSPARENT);
         channel_description_1.setUnFocusColor(Color.TRANSPARENT);
-        channel_description_1.setStyle("-fx-font-size: 11pt;" +
-                "-fx-font-style: italic;");
-        
-        channel_description_2 = new JFXTextArea("Description");
-        channel_description_2.setEditable(false);
-        channel_description_2.setMaxHeight(400);
-        channel_description_2.setMinWidth(300);
-        channel_description_2.setFocusColor(Color.TRANSPARENT);
-        channel_description_2.setUnFocusColor(Color.TRANSPARENT);
-        channel_description_2.setStyle("-fx-font-size: 11pt;" +
-                "-fx-font-style: italic;");
+        channel_description_1.setId("description");
 
         videosCount_1 = new Label("Videos\t");
         videosCount_1.setId("customLabel");
@@ -328,7 +313,6 @@ public class InfoWindow extends BasicWindow {
         videosCount_2.setText("Videos\t\t" + loader.getVideos());
         viewsCount_2.setText("Views\t\t" + loader.getViews());
         commentsCount_2.setText("Comments\t" + loader.getComments());
-        channel_description_2.setText("Description\n\n" + loader.getDescription());
         channel_box_2.getChildren().remove(0);
         channel_box_2.getChildren().add(0,loader.getImage());
     }
