@@ -19,26 +19,32 @@ public class MenuActions extends InfoWindow {
     protected void setActions(){
         channel_Info.setOnMouseClicked(event ->{
             channel_Info.setDisable(true);
+            setDefault();
             channel_info_action();
         });
         compare_channels.setOnMouseClicked(event -> {
             compare_channels.setDisable(true);
+            setDefault();
             compare_channels_action();
         });
         sort_channels.setOnMouseClicked(event -> {
             sort_channels.setDisable(true);
+            setDefault();
             sort_channels_action();
         });
         media_info.setOnMouseClicked(event -> {
             media_info.setDisable(true);
+            setDefault();
             media_info_action();
         });
         compare_media.setOnMouseClicked(event -> {
             compare_media.setDisable(true);
+            setDefault();
             compare_media_action();
         });
         sort_media.setOnMouseClicked(event -> {
             sort_media.setDisable(true);
+            setDefault();
             sort_media_action();
         });
     }
@@ -47,7 +53,6 @@ public class MenuActions extends InfoWindow {
         center.getChildren().clear();
         new Thread(() -> {
             actionName.setText("Channel Info");
-            setDefault();
 
             infoBox.getChildren().clear();
             infoBox.getChildren().addAll(channel_box_1, separator, channel_description_1);
@@ -60,7 +65,6 @@ public class MenuActions extends InfoWindow {
     protected void compare_channels_action(){
         center.getChildren().clear();
         new Thread(() -> {
-            setDefault();
             actionName.setText("Compare channels ");
 
             infoBox.getChildren().clear();
@@ -79,7 +83,6 @@ public class MenuActions extends InfoWindow {
         new Thread(()->{
             actionName.setText("Sort channels");
             TableViewUtils.removeColumn(tableView);
-            setDefault();
             tableView.getItems().clear();
             tableView.setItems(allChannels);
             Platform.runLater(() -> center.getChildren().addAll(actionName, infoLabel, id_input_1,
@@ -120,9 +123,9 @@ public class MenuActions extends InfoWindow {
     protected void compare_media_action() {
         compare_channels_action();
         actionName.setText("Compare media resonance");
+        compare_media.setDisable(false);
         channel_box_1.getChildren().add(commentsCount_1);
         channel_box_2.getChildren().add(commentsCount_2);
-        compare_media.setDisable(false);
     }
 
     protected void sort_media_action(){
@@ -131,7 +134,6 @@ public class MenuActions extends InfoWindow {
         new Thread(() -> {
             actionName.setText("Sort channels by media");
             tableView.getItems().clear();
-            setDefault();
             TableViewUtils.addColumn(tableView);
             tableView.setItems(allChannels);
 
@@ -161,6 +163,5 @@ public class MenuActions extends InfoWindow {
                 }
             }
         });
-
     }
 }

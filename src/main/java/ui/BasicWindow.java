@@ -94,6 +94,9 @@ public class BasicWindow extends Settings {
                 if (isSettingsMode){
                     try {
                         saveSettings();
+                        if (!timing_is_on)
+                            timer.setText("Timer: 0ms");
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

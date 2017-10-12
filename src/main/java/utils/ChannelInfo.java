@@ -99,16 +99,16 @@ public class ChannelInfo {
         return date;
     }
 
-    public String getSubscribers() {
-        return subscribers;
+    public Long getSubscribers() {
+        return Long.parseLong(subscribers);
     }
 
-    public String getVideos() {
-        return videos;
+    public Long getVideos() {
+        return Long.parseLong(videos);
     }
 
-    public String getViews() {
-        return views;
+    public Long getViews() {
+        return Long.parseLong(views);
     }
 
     public Long getComments() {

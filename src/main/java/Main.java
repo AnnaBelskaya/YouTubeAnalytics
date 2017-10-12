@@ -12,12 +12,25 @@ import ui.MenuActions;
 import java.io.IOException;
 
 public class Main extends Application {
+    private double x = 0;
+    private double y = 0;
+
     public void start(Stage stage) throws Exception {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root,900, 650, Color.TRANSPARENT);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
+
+        root.setOnMousePressed(event -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+        root.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
+
         stage.show();
 
         new MenuActions(root, stage);

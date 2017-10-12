@@ -249,7 +249,7 @@ public class InfoWindow extends BasicWindow {
         showInfo_1();
         ChannelInfo loader = new ChannelInfo(id_input_2.getText(), apiKey);
         channel_title_2.setText(" Channel title: " + loader.getChannelTitle());
-        creationDate_2.setText("Date:\t\t\t" + loader.getDate());
+        creationDate_2.setText("Date:\t\t" + loader.getDate());
         subsCount_2.setText("Subscribers\t" + loader.getSubscribers());
         videosCount_2.setText("Videos\t\t" + loader.getVideos());
         viewsCount_2.setText("Views\t\t" + loader.getViews());

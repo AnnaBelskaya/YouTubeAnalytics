@@ -14,23 +14,23 @@ public class TableViewUtils {
         tableView.setStyle("-fx-background-color: white;" +
                 "-fx-font-size: 11pt;");
 
-        TableColumn<ChannelInfo,String> titleColumn = new TableColumn<ChannelInfo,String>("Title");
+        TableColumn<ChannelInfo,String> titleColumn = new TableColumn<>("Title");
         titleColumn.setMinWidth(200);
-        titleColumn.setCellValueFactory(new PropertyValueFactory<ChannelInfo,String>("channelTitle"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("channelTitle"));
 
         TableColumn<ChannelInfo,String> dateColumn = new TableColumn<ChannelInfo,String>("Date");
         dateColumn.setMinWidth(70);
-        dateColumn.setCellValueFactory(new PropertyValueFactory<ChannelInfo,String>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        TableColumn<ChannelInfo,String> videosColumn = new TableColumn<ChannelInfo,String>("Videos");
+        TableColumn<ChannelInfo,Long> videosColumn = new TableColumn<>("Videos");
         videosColumn.setMinWidth(60);
         videosColumn.setCellValueFactory(new PropertyValueFactory<>("videos"));
 
-        TableColumn<ChannelInfo,String> subsColumn = new TableColumn<ChannelInfo, String>("Subs");
+        TableColumn<ChannelInfo,Long> subsColumn = new TableColumn<>("Subs");
         subsColumn.setMinWidth(60);
         subsColumn.setCellValueFactory(new PropertyValueFactory<>("subscribers"));
 
-        TableColumn<ChannelInfo,String> viewsColumn = new TableColumn<ChannelInfo,String>("Views");
+        TableColumn<ChannelInfo,Long> viewsColumn = new TableColumn<>("Views");
         viewsColumn.setMinWidth(70);
         viewsColumn.setCellValueFactory(new PropertyValueFactory<>("views"));
 
